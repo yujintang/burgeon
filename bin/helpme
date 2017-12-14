@@ -1,0 +1,131 @@
+#!/usr/bin/env node
+
+const util = require('util'),
+    Burgeon = new require('../lib/burgeon'),
+    rl = require('readline-sync');
+
+const burgeon = new Burgeon();
+const items = ['安装ssh-key', '安装crud', '安装md2js', '安装kml'];
+console.log('／**************** 欢迎使用itomix自动安装工具🔧****************／');
+
+while (true) {
+    try{
+        let select = rl.keyInSelect(items, '请选择您需要的服务？');
+
+        switch (select) {
+            case 0:
+                while (true) {
+                    let items = ['生成ssh', '查看ssh公钥', '查看备份ssh公钥', '备份ssh', '恢复ssh'];
+                    let select = rl.keyInSelect(items, '1. ->请选择您需要的服务？');
+                    switch (select) {
+                        case 0:
+                            let email = rl.questionEMail('请输入您的邮箱📮地址：')
+                            burgeon.createSsh(email);
+                            break;
+                        case 1:
+                            burgeon.catPublicSsh();
+                            break;
+                        case 2:
+                            burgeon.catBkPublicSsh();
+                            break;
+                        case 3:
+                            burgeon.bkSsh();
+                            break;
+                        case 4:
+                            burgeon.recoverSsh();
+                            break;
+                        case -1:
+                        default:
+                            break;
+                    }
+                    if (select === -1) {
+                        break;
+                    }
+                }//while
+                break;
+
+            case 1:
+                while (true) {
+                    let items = ['crud介绍', '安装crud', '检查是否安装'];
+                    let select = rl.keyInSelect(items, '2. ->请选择您需要的服务？');
+                    switch (select) {
+                        case 0:
+                            burgeon.crudDescription();
+                            break;
+                        case 1:
+                            burgeon.install('crud-tools', 'git@gitlab.kmlab.com:tools/crud-tools.git');;
+                            break;
+                        case 2:
+                            burgeon.testInstall('crud');
+                            break;
+                        case -1:
+                        default:
+                            break;
+                    }
+                    if (select === -1) {
+                        break;
+                    }
+                }//while
+                break;
+
+            case 2:
+                while (true) {
+                    let items = ['md2js介绍', '安装md2js','检查是否安装'];
+                    let select = rl.keyInSelect(items, '3. ->请选择您需要的服务？');
+                    switch (select) {
+                        case 0:
+                            burgeon.md2jsDescription();
+                            break;
+                        case 1:
+                            burgeon.install('md2js', 'git@github.com:yujintang/md2js.git');
+                            break;
+                        case 2:
+                            burgeon.testInstall('md2js');
+                            break;
+                        case -1:
+                        default:
+                            break;
+                    }
+                    if (select === -1) {
+                        break;
+                    }
+                }//while
+                break;
+
+            case 3:
+                while (true) {
+                    let items = ['kml介绍', '安装kml','检查是否安装'];
+                    let select = rl.keyInSelect(items, '4. ->请选择您需要的服务？');
+                    switch (select) {
+                        case 0:
+                            burgeon.kmlDescription();
+                            break;
+                        case 1:
+                            burgeon.install('kml', 'git@gitlab.kmlab.com:npms/kml.git')
+                            break;
+                        case 2:
+                            burgeon.testInstall('kml');
+                            break;
+                        case -1:
+                        default:
+                            break;
+                    }
+                    if (select === -1) {
+                        break;
+                    }
+                }//while
+                break;
+
+            case -1:
+            default:
+                console.log('再见！\n');
+                break;
+        }
+        if (select === -1) {2
+            break;
+        }
+    }catch (e){
+        console.log(`程序错误❌！` + e);
+        break;
+    }
+}//while

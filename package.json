@@ -1,0 +1,28 @@
+{
+  "name": "burgeon",
+  "version": "1.0.1",
+  "description": "burgeon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yujintang/burgeon.git"
+  },
+  "bin": {
+    "helpme": "bin/helpme"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yujintang/burgeon/issues"
+  },
+  "homepage": "https://github.com/yujintang/burgeon#readme",
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "readline-sync": "^1.4.7",
+    "shelljs": "^0.7.8"
+  }
+}
